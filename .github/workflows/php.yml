@@ -22,7 +22,7 @@ jobs:
 
 
     - name: Run unit tests
-      working-directory: wp-includes/sodium_compat
+      working-directory: wp-includes/sodium_compat/tests
       run: vendor/bin/phpunit --testdox
      
     - run: echo "TODAY=$(date +%y-%m-%d)" >> $GITHUB_ENV
