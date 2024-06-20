@@ -16,8 +16,24 @@ jobs:
     steps:
     - name: Checkout repository
       uses: actions/checkout@v2
+    - name: Set up Docker
+      uses: docker/setup-buildx-action@v1
+
+    - name: Build and run Docker Compose
+      run: docker-compose up -d  
+      - name: Wait for services to be ready
+      run: sleep 30  # Adjust time as necessary  
     - name: Install PHPUnit
-      run: wget -O phpunit https://phar.phpunit.de/phpunit-7.phar && chmod +x phpunit
+       run: |
+        wget -O phpunit https://phar.phpunit.de/phpunit-9.phar
+        chmod +x phpunit
+        mv phpunit /usr/local/bin/
+        - name: Verify test directory exists
+      run: |
+        if [ ! -d "./wp-content/plugins/woocommerce/tests" ]; then
+          echo "Tests directory not found!"
+          exit 1
+        fi    
     - name: Run unit tests
       working-directory: ./wp-content/plugins/woocommerce
       run: phpunit --bootstrap tests/bootstrap.php tests
