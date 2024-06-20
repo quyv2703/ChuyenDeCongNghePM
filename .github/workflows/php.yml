@@ -22,6 +22,8 @@ jobs:
 
 
     - name: Run unit tests
+      working-directory: wp-includes/sodium_compat
+      run: vendor/bin/phpunit --testdox
      
     - run: echo "TODAY=$(date +%y-%m-%d)" >> $GITHUB_ENV
     - run: echo Hello world, today is $TODAY
