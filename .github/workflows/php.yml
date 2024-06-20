@@ -24,7 +24,7 @@ jobs:
       - name: Wait for services to be ready
       run: sleep 30  # Adjust time as necessary  
     - name: Install PHPUnit
-       run: |
+      run: |
         wget -O phpunit https://phar.phpunit.de/phpunit-9.phar
         chmod +x phpunit
         mv phpunit /usr/local/bin/
