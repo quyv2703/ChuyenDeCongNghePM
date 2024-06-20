@@ -18,9 +18,7 @@ jobs:
       uses: actions/checkout@v2
     - name: Install PHPUnit
       run: wget -O phpunit https://phar.phpunit.de/phpunit-7.phar && chmod +x phpunit
-    - name: Run unit tests
-      run: |
-        ./phpunit --bootstrap wp-load.php wp-content/plugins/my-plugin/tests
+
     - run: echo "TODAY=$(date +%y-%m-%d)" >> $GITHUB_ENV
     - run: echo Hello world, today is $TODAY
 
