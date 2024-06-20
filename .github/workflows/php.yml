@@ -35,13 +35,6 @@ jobs:
           chmod +x phpunit
           sudo mv phpunit /usr/local/bin/
 
-      - name: Verify test directory exists
-        run: |
-          if [ ! -d "./wp-content/plugins/woocommerce/tests" ]; then
-            echo "Tests directory not found!"
-            exit 1
-          fi
-
       - name: Run unit tests
         working-directory: ./wp-content/plugins/woocommerce
         run: phpunit --bootstrap tests/bootstrap.php tests
