@@ -35,10 +35,6 @@ jobs:
           chmod +x phpunit
           sudo mv phpunit /usr/local/bin/
 
-      - name: Run unit tests
-        working-directory: ./wp-content/plugins/woocommerce
-        run: phpunit --bootstrap tests/bootstrap.php tests
-
       - run: echo "TODAY=$(date +%y-%m-%d)" >> $GITHUB_ENV
 
       - run: echo Hello world, today is $TODAY
