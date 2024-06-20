@@ -1,0 +1,37 @@
+name: PHP Composer
+
+on:
+  push:
+    branches: [ "main" ]
+ 
+
+permissions:
+  contents: read
+
+jobs:
+  build:
+
+    runs-on: ubuntu-latest
+
+    steps:
+
+
+    - name: Checkout repository
+      uses: actions/checkout@v2
+
+
+
+    - name: Run unit tests
+      working-directory: wp-includes/sodium_compat
+      run: vendor/bin/phpunit --testdox
+     
+    - run: echo "TODAY=$(date +%y-%m-%d)" >> $GITHUB_ENV
+    - run: echo Hello world, today is $TODAY
+
+  
+
+    # Add a test script to composer.json, for instance: "test": "vendor/bin/phpunit"
+    # Docs: https://getcomposer.org/doc/articles/scripts.md
+
+    # - name: Run test suite
+    #   run: composer run-script test
